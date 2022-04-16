@@ -15,7 +15,13 @@ function TopMenu() {
             <Link to="/signin">Inloggen</Link>
           </li>
           <li>
-            <Link to="/reception">reception</Link>
+            <Link to="/reception">Reception</Link>
+          </li>
+          <li>
+            <Link to="/mechanic">Monteur</Link>
+          </li>
+          <li>
+            <Link to="/cashier">Betalen</Link>
           </li>
         </ul>
       </div>
