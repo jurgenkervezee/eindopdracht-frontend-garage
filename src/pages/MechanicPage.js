@@ -4,7 +4,7 @@ function MechanicPage() {
 
     return (
         <>
-            <p>Monteur</p>
+            <h3>Werkplaats Pagina</h3>
             <p>Maak een keuring en repareer de auto</p>
         </>
     );

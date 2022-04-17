@@ -5,7 +5,7 @@ function CashierPage() {
 
     return (
         <>
-            <p>Kassier</p>
+            <h3>Kassier Pagina</h3>
             <p>Zoeken naar een keuring en deze kunnen uitdraaien met totaal bedrag</p>
         </>
     );
