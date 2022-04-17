@@ -1,11 +1,13 @@
 import React, {useContext, useState} from 'react';
 import  './SignIn.css';
 import axios from "axios";
+import {useHistory} from "react-router-dom";
 import {AuthContext} from "../context/AuthContext";
 
 function SignInPage() {
 
-    const {login} = useContext(AuthContext);
+    const history = useHistory();
+    const {login, isAuth, setIsAuth} = useContext(AuthContext);
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
 
@@ -26,7 +28,14 @@ function SignInPage() {
             //Function Role
             console.log(result.data.roles[0])
 
-            login(result.data.accessToken, result.data.roles[0]);
+            login(result.data);
+
+
+
+
+        if(result.data.roles[0]=== "ROLE_RECEPTION"){
+
+        }
 
         } catch (e) {
             console.error(e);

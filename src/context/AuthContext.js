@@ -13,9 +13,20 @@ const AuthContextProvider = ({children}) => {
     });
 
 
-function signIn(jwt, role){
-    localStorage.setItem("token", jwt);
-    localStorage.setItem("role", role);
+    
+function signIn(result){
+    localStorage.setItem("token", result.accessToken);
+    localStorage.setItem("role", result.roles[0]);
+
+    setIsAuth({
+        ...isAuth,
+        user: {
+            id: result.id,
+            role: result.roles[0],
+            username: result.username,
+            email: result.email,
+        }
+    });
 }
 
 
@@ -24,6 +35,7 @@ function signIn(jwt, role){
     const contextData = {
         isAuth: isAuth.isAuth,
         user: isAuth.user,
+        setIsAuth,
         login: signIn,
         // logout: signOut,
     };
