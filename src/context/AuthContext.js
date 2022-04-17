@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {createContext} from 'react';
 import axios from "axios";
+import {useHistory} from "react-router-dom";
 
 export const AuthContext = createContext(null);
 
 const AuthContextProvider = ({children}) => {
+    const history = useHistory();
 
     const [isAuth, setIsAuth] = useState({
         isAuth: false,
@@ -12,6 +14,12 @@ const AuthContextProvider = ({children}) => {
         status: 'pending',
     });
 
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+        if(!token){
+            history.push('/signin')
+        }
+    }, [])
 
     
 function signIn(result){
@@ -25,11 +33,20 @@ function signIn(result){
             role: result.roles[0],
             username: result.username,
             email: result.email,
-        }
+        },
+        isAuth: true,
+        status: 'done'
     });
 }
 
-
+function signOut(){
+        localStorage.clear();
+        setIsAuth({
+            user: null,
+            isAuth: false,
+            status: 'pending',
+        })
+}
 
 
     const contextData = {
@@ -37,7 +54,7 @@ function signIn(result){
         user: isAuth.user,
         setIsAuth,
         login: signIn,
-        // logout: signOut,
+        logout: signOut,
     };
 
     return (

@@ -21,12 +21,15 @@ function SignInPage() {
                 password: password,
 
             });
-            
+
+
+
             console.log(result);
             //accesstoken
             console.log(result.data.accessToken)
             //Function Role
             console.log(result.data.roles[0])
+
 
             login(result.data);
 
@@ -34,7 +37,7 @@ function SignInPage() {
 
 
         if(result.data.roles[0]=== "ROLE_RECEPTION"){
-
+        history.push('/reception')
         }
 
         } catch (e) {
