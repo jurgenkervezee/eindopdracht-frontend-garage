@@ -3,19 +3,23 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 5px
 }
 ul {
     list-style-type: none;
     flex-basis: 550px;
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     align-items: center;
 }
+li + li{
+    margin-left: 8px;
 
+}
 nav {
     width: 100%;
     background-color: antiquewhite;
     display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     height: 60px;
 }
