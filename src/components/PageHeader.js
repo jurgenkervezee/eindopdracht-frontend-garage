@@ -1,17 +1,17 @@
 import logo from "../assets/Mechanic.png";
 import React from "react";
+import "./pageheader.css";
 
 
-function PageHeader({title,logo,logoName }){
+function PageHeader({logo,logoName }){
     return(
-      <div className="titel-container">
+      <div className="title-container">
 
           <img
               src={logo}
               alt={logoName}
               className="logo"
           />
-          <h2>{title}</h2>
       </div>
 
     );

@@ -13,7 +13,6 @@ function HomePage() {
 
                 <PageHeader
                     logo={logo}
-                    title="Home"
                     logoName="homepageLogo"
                 />
 

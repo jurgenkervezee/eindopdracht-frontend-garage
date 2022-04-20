@@ -23,5 +23,21 @@ li a:hover {
 
 button{
     /*border: none;*/
+}
 
+
+
+/*client output*/
+.client-table{
+    max-width: 300px;
+    background-color: aliceblue;
+    margin-top: 10px;
+}
+
+tr {
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #D6EEEE;
 }

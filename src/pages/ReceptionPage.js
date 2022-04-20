@@ -1,6 +1,7 @@
 import './Reception.css';
 import React, {useState} from 'react';
 import axios from "axios";
+import Tabs from "../components/tabs/Tabs";
 
 function ReceptionPage() {
 
@@ -9,12 +10,10 @@ function ReceptionPage() {
     const [navAppointment, setNavAppointment] = useState(false);
 
     const [clientSearchName, setClientSearchName] = useState('');
-    const [client, setClient] = useState({});
-    // console.log(navSearchClient);
+    const [client, setClient] = useState(null);
+
 
     function handleMenuVisibility(menuItem) {
-
-        console.log(menuItem);
 
         switch (menuItem) {
             case "Zoek Client":
@@ -26,11 +25,13 @@ function ReceptionPage() {
                 setNavSearchClient(false);
                 setNavNewClient(true);
                 setNavAppointment(false);
+                setClient(null);
                 break;
             case "Maak Afspraak":
                 setNavSearchClient(false);
                 setNavNewClient(false);
                 setNavAppointment(true);
+                setClient(null);
                 break;
             default:
                 setNavSearchClient(true);
@@ -55,8 +56,6 @@ function ReceptionPage() {
             console.log(result);
             setClient(result.data);
 
-            const { data } = result.data;
-            console.log(data);
         } catch (e) {
             console.error(e);
         }
@@ -87,7 +86,7 @@ function ReceptionPage() {
                         </button>
                     </ul>
                 </nav>
-{/*Form element toe search for clients*/}
+                {/*Form element to search for clients*/}
                 {navSearchClient ?
                     <form
                         onSubmit={handleClientSearch}
@@ -110,6 +109,31 @@ function ReceptionPage() {
                     : <p>Loading</p>
                 }
 
+                {client ?
+                    <>
+                        <table className="client-table">
+                            <tbody>
+                            <tr>
+                                <td>Naam:</td>
+                                <td>{client.firstName} {client.lastName}</td>
+                            </tr>
+                            <tr>
+                                <td>Adres:</td>
+                                <td>{client.address.streetName} {client.address.houseNumber}{client.address.houseNumberAddition}</td>
+                            </tr>
+                            <tr>
+                                <td>Postcode Woonplaats:</td>
+                                <td>{client.address.postalCode} {client.address.homeTown}</td>
+                            </tr>
+                            <tr>
+                                <td>Telefoonnummer:</td>
+                                <td>{client.telephoneNumber}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </>
+                    : <p>Nog geen klant gegevens gevonden</p>
+                }
 
             </div>
         </>
