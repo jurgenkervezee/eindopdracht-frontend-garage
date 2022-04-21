@@ -1,45 +1,14 @@
 import './Reception.css';
 import React, {useState} from 'react';
 import axios from "axios";
-import Tabs from "../components/tabs/Tabs";
+
 
 function ReceptionPage() {
 
-    const [navSearchClient, setNavSearchClient] = useState(true);
-    const [navNewClient, setNavNewClient] = useState(false);
-    const [navAppointment, setNavAppointment] = useState(false);
-
+    const [activeTab, setActiveTab] = useState('tab-1');
     const [clientSearchName, setClientSearchName] = useState('');
     const [client, setClient] = useState(null);
 
-
-    function handleMenuVisibility(menuItem) {
-
-        switch (menuItem) {
-            case "Zoek Client":
-                setNavSearchClient(true);
-                setNavNewClient(false);
-                setNavAppointment(false);
-                break;
-            case "Nieuwe Client":
-                setNavSearchClient(false);
-                setNavNewClient(true);
-                setNavAppointment(false);
-                setClient(null);
-                break;
-            case "Maak Afspraak":
-                setNavSearchClient(false);
-                setNavNewClient(false);
-                setNavAppointment(true);
-                setClient(null);
-                break;
-            default:
-                setNavSearchClient(true);
-                setNavNewClient(false);
-                setNavAppointment(false);
-                break;
-        }
-    }
 
     async function handleClientSearch(e) {
         e.preventDefault();
@@ -66,50 +35,38 @@ function ReceptionPage() {
             <div className="inner-container">
                 <h3>Receptie Pagina</h3>
                 <nav className="navbar">
-                    <ul>
-                        <button
-                            type="button"
-                            onClick={() => handleMenuVisibility("Zoek Client")}
-                        >
-                            Zoek Client
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => handleMenuVisibility("Nieuwe Client")}
-                        >
-                            Nieuwe Client
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => handleMenuVisibility("Maak Afspraak")}
-                        >Maken Afspraak
-                        </button>
-                    </ul>
+
+                    <button onClick={() => setActiveTab('tab-1')}>ZOEK</button>
+                    <button onClick={() => setActiveTab('tab-2')}>NIEUW</button>
                 </nav>
-                {/*Form element to search for clients*/}
-                {navSearchClient ?
-                    <form
-                        onSubmit={handleClientSearch}
-                    >
-                        <label
-                            htmlFor="client">
-                            Zoek client
-                            <input
-                                type="text"
-                                id="client"
-                                onChange={(e) => setClientSearchName(e.target.value)}
-                                value={clientSearchName}
-                            />
-                        </label>
-                        <button
-                            type="submit"
-                        >Zoek
-                        </button>
-                    </form>
-                    : <p>Loading</p>
+
+                {activeTab === 'tab-1' &&
+                    // <TabComponentOne />
+                    <>
+                        <form
+                            onSubmit={handleClientSearch}
+                        >
+                            <label
+                                htmlFor="client">
+                                Zoek client
+                                <input
+                                    type="text"
+                                    id="client"
+                                    onChange={(e) => setClientSearchName(e.target.value)}
+                                    value={clientSearchName}
+                                />
+                            </label>
+                            <button
+                                type="submit"
+                            >Zoek
+                            </button>
+                        </form>
+                    </>
                 }
 
-                {client ?
+
+                {activeTab === 'tab-2' &&
+                    // <TabComponentTwo/>
                     <>
                         <table className="client-table">
                             <tbody>
@@ -132,8 +89,8 @@ function ReceptionPage() {
                             </tbody>
                         </table>
                     </>
-                    : <p>Nog geen klant gegevens gevonden</p>
                 }
+
 
             </div>
         </>
