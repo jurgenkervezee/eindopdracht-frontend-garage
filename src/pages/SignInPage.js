@@ -7,7 +7,7 @@ import {AuthContext} from "../context/AuthContext";
 function SignInPage() {
 
     const history = useHistory();
-    const {login, isAuth, setIsAuth} = useContext(AuthContext);
+    const { login } = useContext(AuthContext);
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
 
@@ -21,23 +21,15 @@ function SignInPage() {
                 password: password,
 
             });
-
-
-
-            console.log(result);
-            //accesstoken
-            console.log(result.data.accessToken)
-            //Function Role
-            console.log(result.data.roles[0])
-
-
             login(result.data);
+            const role = result.data.roles[0];
 
-
-
-
-        if(result.data.roles[0]=== "ROLE_RECEPTION"){
+        if(role === "ROLE_RECEPTION"){
         history.push('/reception')
+        } else if(role === "ROLE_MECHANIC"){
+            history.push('/mechanic')
+        } else if(role === "ROLE_CASHIER"){
+            history.push('/cashier')
         }
 
         } catch (e) {

@@ -1,21 +1,24 @@
+import './Home.css';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import logo from "../assets/Mechanic.png";
+import PageHeader from "../components/PageHeader";
+
 
 function HomePage() {
 
     return (
         <>
-            <h3>Home Pagina</h3>
-            <div>
-                <img
-                    src={logo}
-                    alt="logo"
-                    className="logo"
+            <div className="inner-container">
+
+                <PageHeader
+                    logo={logo}
+                    logoName="homepageLogo"
                 />
+
+                <p>Algemene informatie over de garage en een link om naar de inlog pagina te gaan.</p>
+                <p>Je kunt deze <Link to="/signin">link</Link> gebruiken om in te loggen</p>
             </div>
-            <p>Algemene informatie over de garage en een link om naar de inlog pagina te gaan.</p>
-            <p>Je kunt deze <Link to="/signin">link</Link> gebruiken om in te loggen</p>
         </>
     );
 }

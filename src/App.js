@@ -10,8 +10,6 @@ import CashierPage from "./pages/CashierPage";
 import TopMenu from "./components/TopMenu";
 import {AuthContext} from "./context/AuthContext";
 
-
-
 function App() {
 
     const { isAuth, user } = useContext(AuthContext);

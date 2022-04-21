@@ -1,6 +1,6 @@
 import './TopMenu.css';
 import React, {useContext} from 'react';
-import {Link, useHistory} from 'react-router-dom';
+import { NavLink, useHistory} from 'react-router-dom';
 import {AuthContext} from '../context/AuthContext';
 
 
@@ -16,16 +16,16 @@ function TopMenu() {
                     <h4>GarageBedrijf Frontend</h4>
                     <ul>
                         <li>
-                            <Link to="/">Home</Link>
+                            <NavLink to="/" exact activeClassName="active-link">Home</NavLink>
                         </li>
                         <li>
-                            <Link to="/reception">Reception</Link>
+                            <NavLink to="/reception" exact activeClassName="active-link">Reception</NavLink>
                         </li>
                         <li>
-                            <Link to="/mechanic">Monteur</Link>
+                            <NavLink to="/mechanic" exact activeClassName="active-link">Monteur</NavLink>
                         </li>
                         <li>
-                            <Link to="/cashier">Betalen</Link>
+                            <NavLink to="/cashier" exact activeClassName="active-link">Betalen</NavLink>
                         </li>
                     </ul>
                     <div>
