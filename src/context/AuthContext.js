@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import {createContext} from 'react';
-import axios from "axios";
 import {useHistory} from "react-router-dom";
 
 export const AuthContext = createContext(null);
@@ -16,9 +15,24 @@ const AuthContextProvider = ({children}) => {
 
     useEffect(() => {
         const token = localStorage.getItem("token")
+        const role =  localStorage.getItem("role")
         if(!token){
             history.push('/signin')
-        }
+            setIsAuth({
+                ...isAuth,
+                status: "done",
+                }
+            )
+            }
+            else {
+                setIsAuth({
+                    isAuth: true,
+                    user: {
+                        role: role
+                    },
+                    status: "done",
+                })
+            }
     }, [])
 
     
@@ -44,7 +58,7 @@ function signOut(){
         setIsAuth({
             user: null,
             isAuth: false,
-            status: 'pending',
+            status: 'done',
         })
 }
 
@@ -57,10 +71,11 @@ function signOut(){
         logout: signOut,
     };
 
+
     return (
         <AuthContext.Provider value={contextData}>
-            {children}
-            {/*{isAuth.status === 'done' ? children : <p>Loading...</p> }*/}
+            {/*{children}*/}
+            {isAuth.status === 'done' ? children : <p>Loading...</p> }
         </AuthContext.Provider>
     );
 };

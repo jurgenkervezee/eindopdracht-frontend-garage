@@ -25,12 +25,14 @@ function ReceptionPage() {
             console.log(result);
             setClient(result.data);
 
+
+
         } catch (e) {
             console.error(e);
         }
     }
 
-    return (
+     return (
         <>
             <div className="inner-container">
                 <h3>Receptie Pagina</h3>
@@ -61,6 +63,48 @@ function ReceptionPage() {
                             >Zoek
                             </button>
                         </form>
+                        <div>
+
+
+                            {/*{Object.keys(client).length > 0 ?*/}
+
+                            {/*    displayResult(client);*/}
+                            {/*    :*/}
+                            {/*    <p>*/}
+                            {/*        dddd*/}
+                            {/*    </p>*/}
+                            {/*}*/}
+
+
+                                {client ?
+                                <>
+                                    <table className="client-table">
+                                        <tbody>
+                                        <tr>
+                                            <td>Naam:</td>
+                                            <td>{client.firstName} {client.lastName}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Adres:</td>
+                                            <td>{client.address.streetName} {client.address.houseNumber}{client.address.houseNumberAddition}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Postcode Woonplaats:</td>
+                                            <td>{client.address.postalCode} {client.address.homeTown}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Telefoonnummer:</td>
+                                            <td>{client.telephoneNumber}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </>
+                                :
+                                <p>
+                                    niks
+                                </p>
+                            }
+                        </div>
                     </>
                 }
 
@@ -72,20 +116,20 @@ function ReceptionPage() {
                             <tbody>
                             <tr>
                                 <td>Naam:</td>
-                                <td>{client.firstName} {client.lastName}</td>
+                                {/*<td>{client.firstName} {client.lastName}</td>*/}
                             </tr>
-                            <tr>
-                                <td>Adres:</td>
-                                <td>{client.address.streetName} {client.address.houseNumber}{client.address.houseNumberAddition}</td>
-                            </tr>
-                            <tr>
-                                <td>Postcode Woonplaats:</td>
-                                <td>{client.address.postalCode} {client.address.homeTown}</td>
-                            </tr>
-                            <tr>
-                                <td>Telefoonnummer:</td>
-                                <td>{client.telephoneNumber}</td>
-                            </tr>
+                            {/*<tr>*/}
+                            {/*    <td>Adres:</td>*/}
+                            {/*    <td>{client.address.streetName} {client.address.houseNumber}{client.address.houseNumberAddition}</td>*/}
+                            {/*</tr>*/}
+                            {/*<tr>*/}
+                            {/*    <td>Postcode Woonplaats:</td>*/}
+                            {/*    <td>{client.address.postalCode} {client.address.homeTown}</td>*/}
+                            {/*</tr>*/}
+                            {/*<tr>*/}
+                            {/*    <td>Telefoonnummer:</td>*/}
+                            {/*    <td>{client.telephoneNumber}</td>*/}
+                            {/*</tr>*/}
                             </tbody>
                         </table>
                     </>
