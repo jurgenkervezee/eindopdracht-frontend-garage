@@ -2,13 +2,13 @@ import React from 'react';
 import './App.css';
 import {useContext} from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import ReceptionPage from './pages/ReceptionPage';
-import SignInPage from "./pages/SignInPage";
-import MechanicPage from "./pages/MechanicPage";
-import CashierPage from "./pages/CashierPage";
-import TopMenu from "./components/TopMenu";
-import {AuthContext} from "./context/AuthContext";
+import HomePage from '../home/HomePage';
+import ReceptionPage from '../reception/ReceptionPage';
+import SignInPage from "../signin/SignInPage";
+import MechanicPage from "../MechanicPage";
+import CashierPage from "../CashierPage";
+import TopMenu from "../../components/topmenu/TopMenu";
+import {AuthContext} from "../../context/AuthContext";
 
 function App() {
 

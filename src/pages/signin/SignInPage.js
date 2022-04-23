@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import  './SignIn.css';
 import axios from "axios";
 import {useHistory} from "react-router-dom";
-import {AuthContext} from "../context/AuthContext";
+import {AuthContext} from "../../context/AuthContext";
 
 function SignInPage() {
 

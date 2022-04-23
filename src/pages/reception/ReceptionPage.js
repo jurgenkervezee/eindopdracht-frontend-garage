@@ -5,14 +5,17 @@ import axios from "axios";
 
 function ReceptionPage() {
 
+    //tabs
     const [activeTab, setActiveTab] = useState('tab-1');
+    //state for searchClient
     const [clientSearchName, setClientSearchName] = useState('');
     const [client, setClient] = useState(null);
+    //state for newClient
+
 
 
     async function handleClientSearch(e) {
         e.preventDefault();
-
         const token = localStorage.getItem('token');
 
         try {
@@ -24,10 +27,17 @@ function ReceptionPage() {
             });
             console.log(result);
             setClient(result.data);
-
-
-
         } catch (e) {
+            console.error(e);
+        }
+    }
+
+    async function handleNewClient(e){
+        e.preventDefault();
+
+        try{
+
+        }catch (e){
             console.error(e);
         }
     }
@@ -43,7 +53,7 @@ function ReceptionPage() {
                 </nav>
 
                 {activeTab === 'tab-1' &&
-                    // <TabComponentOne />
+                    // Tab search client />
                     <>
                         <form
                             onSubmit={handleClientSearch}
@@ -64,18 +74,7 @@ function ReceptionPage() {
                             </button>
                         </form>
                         <div>
-
-
                             {/*{Object.keys(client).length > 0 ?*/}
-
-                            {/*    displayResult(client);*/}
-                            {/*    :*/}
-                            {/*    <p>*/}
-                            {/*        dddd*/}
-                            {/*    </p>*/}
-                            {/*}*/}
-
-
                                 {client ?
                                 <>
                                     <table className="client-table">
@@ -110,28 +109,26 @@ function ReceptionPage() {
 
 
                 {activeTab === 'tab-2' &&
-                    // <TabComponentTwo/>
+                    // <Tab Two new client/>
                     <>
-                        <table className="client-table">
-                            <tbody>
-                            <tr>
-                                <td>Naam:</td>
-                                {/*<td>{client.firstName} {client.lastName}</td>*/}
-                            </tr>
-                            {/*<tr>*/}
-                            {/*    <td>Adres:</td>*/}
-                            {/*    <td>{client.address.streetName} {client.address.houseNumber}{client.address.houseNumberAddition}</td>*/}
-                            {/*</tr>*/}
-                            {/*<tr>*/}
-                            {/*    <td>Postcode Woonplaats:</td>*/}
-                            {/*    <td>{client.address.postalCode} {client.address.homeTown}</td>*/}
-                            {/*</tr>*/}
-                            {/*<tr>*/}
-                            {/*    <td>Telefoonnummer:</td>*/}
-                            {/*    <td>{client.telephoneNumber}</td>*/}
-                            {/*</tr>*/}
-                            </tbody>
-                        </table>
+                        <form
+                            onSubmit={handleNewClient}
+                        >
+                            <label
+                                htmlFor="clientnew">
+                                Nieuwe Client
+                                <input
+                                    type="text"
+                                    id="newClient"
+                                    onChange={(e) => setClientSearchName(e.target.value)}
+                                    value={clientSearchName}
+                                />
+                            </label>
+                            <button
+                                type="submit"
+                            >Zoek
+                            </button>
+                        </form>
                     </>
                 }
 

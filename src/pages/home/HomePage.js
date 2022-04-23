@@ -1,8 +1,8 @@
 import './Home.css';
 import React from 'react';
 import {Link} from 'react-router-dom';
-import logo from "../assets/Mechanic.png";
-import PageHeader from "../components/pageheader/PageHeader";
+import logo from "../../assets/Mechanic.png";
+import PageHeader from "../../components/pageheader/PageHeader";
 
 
 function HomePage() {
