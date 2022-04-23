@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router} from 'react-router-dom';
-import './index.css';
-import App from './App'
+import './pages/index/index.css';
+import App from './pages/app/App'
 import AuthContextProvider from './context/AuthContext';
 import reportWebVitals from './reportWebVitals';
 

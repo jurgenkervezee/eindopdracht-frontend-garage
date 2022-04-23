@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import  './SignIn.css';
 import axios from "axios";
 import {useHistory} from "react-router-dom";
-import {AuthContext} from "../context/AuthContext";
+import {AuthContext} from "../../context/AuthContext";
 
 function SignInPage() {
 
@@ -45,21 +45,22 @@ function SignInPage() {
                 <form
                     onSubmit={handleSubmit}
                 >
+                    <p className="form-header">Login</p>
                     <label
                         htmlFor="username">
-                        Username
                         <input
                             type="text"
                             id="username"
+                            placeholder="username"
                             onChange={(e) => setUserName(e.target.value)}
                             value={userName}
                         />
                     </label>
                     <label htmlFor="password">
-                        Password
                         <input
                             type="password"
                             id="signin-password"
+                            placeholder="password"
                             onChange={(e) => setPassword(e.target.value)}
                             value={password}
                         />

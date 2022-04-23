@@ -2,7 +2,11 @@
 
 form label {
     margin: 4px 0;
-    font-weight: bold;
+    /*font-weight: bold;*/
+}
+
+.form-header{
+
 }
 
 form input {

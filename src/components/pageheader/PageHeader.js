@@ -1,4 +1,4 @@
-import logo from "../assets/Mechanic.png";
+
 import React from "react";
 import "./pageheader.css";
 
