@@ -5,7 +5,8 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 import HomePage from '../home/HomePage';
 import ReceptionPage from '../reception/ReceptionPage';
 import SignInPage from "../signin/SignInPage";
-import MechanicPage from "../MechanicPage";
+import MechanicPage from "../mechanic/MechanicPage";
+import MechanicPageCarinspection from "../mechanic/MechanicPageCarinspection";
 import CashierPage from "../CashierPage";
 import TopMenu from "../../components/topmenu/TopMenu";
 import {AuthContext} from "../../context/AuthContext";
@@ -30,6 +31,9 @@ function App() {
                         </Route>
                         <Route exact path="/mechanic">
                             { isAuth && user.role === "ROLE_MECHANIC" ?  <MechanicPage/> : <Redirect to="/signin"/>}
+                        </Route>
+                        <Route path="/mechanic/:carinspectionId">
+                            { isAuth && user.role === "ROLE_MECHANIC" ?  <MechanicPageCarinspection/> : <Redirect to="/signin"/>}
                         </Route>
                         <Route exact path="/cashier">
                             { isAuth && user.role === "ROLE_CASHIER" ?  <CashierPage/> : <Redirect to="/signin"/>}
