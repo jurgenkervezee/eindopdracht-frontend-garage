@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import "./mechanic.css";
 import CarinspectionListElement from "../../components/carinspection/CarinspectionListElement";
@@ -6,40 +6,41 @@ import CarinspectionListElement from "../../components/carinspection/Carinspecti
 function MechanicPage() {
     const [carinspectionlist, setCarinspectionList] = useState({});
 
-    async function handleCarinspectionList() {
-        const token = localStorage.getItem('token');
 
-        try {
-            const result = await axios.get("http://localhost:8080/api/inspections/list", {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                }
-            });
-            console.log(result);
-            setCarinspectionList(result.data);
-            console.log(carinspectionlist);
+    useEffect(()=> {
 
-        } catch (e) {
-            console.error(e);
+        async function handleCarinspectionList() {
+            const token = localStorage.getItem('token');
+
+            try {
+                const result = await axios.get("http://localhost:8080/api/inspections/list", {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }
+                });
+                console.log(result);
+                setCarinspectionList(result.data);
+                console.log(carinspectionlist);
+
+            } catch (e) {
+                console.error(e);
+            }
         }
-    }
+        handleCarinspectionList();
+    }, [])
+
+
 
     return (
         <>
             <header className="inner-container">
                 <h3>Werkplaats Pagina</h3>
                 <nav className="navbar">
-                    <button
-                        type="button"
-                        onClick={handleCarinspectionList}
-                    >
-                        Keuringen
-                    </button>
                 </nav>
             </header>
 
-            <p>Maak een keuring en repareer de auto</p>
+            <h3>KeuringsLijst</h3>
 
             {carinspectionlist.length > 0 &&
                 <>
@@ -57,10 +58,9 @@ function MechanicPage() {
                             return (
                                 <>
                                     <CarinspectionListElement
-                                        key={`${inspection.id}+${Math.random(5)}`}
+                                        key={`${inspection.id} + ${inspection.client.telephoneNumber}`}
                                         data={inspection}
                                     />
-
                                 </>
                             );
                         })}

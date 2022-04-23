@@ -5,6 +5,7 @@ import { Link }  from "react-router-dom/";
 function CarinspectionListElement({data}){
 
     return (
+
         <tr>
             <td>{data.id}</td>
             <td>{data.client.firstName} {data.client.lastName}</td>

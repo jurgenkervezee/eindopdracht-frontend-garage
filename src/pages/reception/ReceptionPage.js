@@ -1,7 +1,8 @@
 import './Reception.css';
 import React, {useState} from 'react';
 import axios from "axios";
-import {useForm} from 'react-hook-form';
+import {useForm } from 'react-hook-form';
+import DisplayClientTable from "../../components/reception/DisplayClientTable";
 
 
 function ReceptionPage() {
@@ -12,8 +13,7 @@ function ReceptionPage() {
     const [clientSearchName, setClientSearchName] = useState('');
     const [client, setClient] = useState(null);
     //state for newClient
-    const {register, handleSubmit} = useForm();
-
+    const { handleSubmit, formState: { errors }, register } = useForm();
 
     async function handleClientSearch(e) {
         e.preventDefault();
@@ -45,7 +45,7 @@ function ReceptionPage() {
             }
         })
             console.log(result);
-        alert(`De gebruiker is opgeslagen onder id: ${result.data}`)
+        alert(`De gebruiker is succesvol opgeslagen onder id: ${result.data}`)
         } catch (e) {
             console.error(e);
         }
@@ -86,34 +86,12 @@ function ReceptionPage() {
                             </fieldset>
                         </form>
                         <div>
-                            {/*{Object.keys(client).length > 0 ?*/}
                             {client ?
                                 <>
-                                    <table className="client-table">
-                                        <tbody>
-                                        <tr>
-                                            <td>Naam:</td>
-                                            <td>{client.firstName} {client.lastName}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Adres:</td>
-                                            <td>{client.address.streetName} {client.address.houseNumber}{client.address.houseNumberAddition}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Postcode Woonplaats:</td>
-                                            <td>{client.address.postalCode} {client.address.homeTown}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Telefoonnummer:</td>
-                                            <td>{client.telephoneNumber}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                    <DisplayClientTable client={client}/>
                                 </>
                                 :
-                                <p>
-                                    niks
-                                </p>
+                                <p>...</p>
                             }
                         </div>
                     </>
@@ -128,31 +106,36 @@ function ReceptionPage() {
                         >
                             <fieldset>
                                 <legend>Nieuwe Client</legend>
+
                                 <label
                                     htmlFor="clientnew">
+                                    {errors.firstName && <p className="validation-alert">{errors.firstName.message}</p>}
                                     <input
                                         type="text"
                                         id="newClientFirstName"
                                         placeholder="voornaam"
-                                        {...register("firstName")}
+                                        {...register("firstName", {required: "Het veld voornaam mag niet leeg zijn"})}
                                     />
+                                    {errors.lastName && <p className="validation-alert">{errors.lastName.message}</p>}
                                     <input
                                         type="text"
                                         id="newClientLastName"
                                         placeholder="achternaam"
-                                        {...register("lastName")}
+                                        {...register("lastName", {required: "Het veld achternaam mag niet leeg zijn"})}
                                     />
+                                    {errors.streetName && <p className="validation-alert">{errors.streetName.message}</p>}
                                     <input
                                         type="text"
                                         id="newClientStreetName"
                                         placeholder="straat naam"
-                                        {...register("streetName")}
+                                        {...register("streetName", {required: "Het veld straatnaam mag niet leeg zijn"})}
                                     />
+                                    {errors.houseNumber && <p className="validation-alert">{errors.houseNumber.message}</p>}
                                     <input
                                         type="number"
                                         id="newClientHouseNumber"
                                         placeholder="huisnummer"
-                                        {...register("houseNumber")}
+                                        {...register("houseNumber", {required: "Het veld huisnummer mag niet leeg zijn"})}
                                     />
                                     <input
                                         type="text"
@@ -160,23 +143,26 @@ function ReceptionPage() {
                                         placeholder="huisnummer toevoeging"
                                         {...register("houseNumberAddition")}
                                     />
+                                    {errors.postalCode && <p className="validation-alert">{errors.postalCode.message}</p>}
                                     <input
                                         type="text"
                                         id="newClientPostalCode"
                                         placeholder="postcode"
-                                        {...register("postalCode")}
+                                        {...register("postalCode", {required: "Het veld postcode mag niet leeg zijn"})}
                                     />
+                                    {errors.homeTown && <p className="validation-alert">{errors.homeTown.message}</p>}
                                     <input
                                         type="text"
                                         id="newClientHomeTown"
                                         placeholder="woonplaats"
-                                        {...register("homeTown")}
+                                        {...register("homeTown", {required: "Het veld woonplaats mag niet leeg zijn"})}
                                     />
+                                    {errors.phoneNumber && <p className="validation-alert">{errors.phoneNumber.message}</p>}
                                     <input
                                         type="tel"
                                         id="newClientPhoneNumber"
                                         placeholder="telefoonummer"
-                                        {...register("phoneNumber")}
+                                        {...register("phoneNumber", {required: "Het veld telefoonnummer mag niet leeg zijn"})}
                                     />
                                 </label>
                                 <button

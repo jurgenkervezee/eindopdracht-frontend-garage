@@ -1,11 +1,12 @@
 .inspection-table{
     max-width: 300px;
+
 }
 
 .inspection-table th{
     text-align: left;
     padding-top: 12px;
     padding-bottom: 12px;
-    background-color: darkgrey;
-    color: white;
+    background-color: antiquewhite;
+    color: black;
 }
