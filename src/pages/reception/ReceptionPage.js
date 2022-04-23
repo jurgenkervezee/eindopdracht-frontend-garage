@@ -1,6 +1,7 @@
 import './Reception.css';
 import React, {useState} from 'react';
 import axios from "axios";
+import {useForm} from 'react-hook-form';
 
 
 function ReceptionPage() {
@@ -11,7 +12,7 @@ function ReceptionPage() {
     const [clientSearchName, setClientSearchName] = useState('');
     const [client, setClient] = useState(null);
     //state for newClient
-
+    const {register, handleSubmit} = useForm();
 
 
     async function handleClientSearch(e) {
@@ -32,17 +33,25 @@ function ReceptionPage() {
         }
     }
 
-    async function handleNewClient(e){
-        e.preventDefault();
+    async function handleNewClient(data) {
+        const token = localStorage.getItem('token');
+        console.log(data);
 
-        try{
-
-        }catch (e){
+        try {
+        const result = await axios.post("http://localhost:8080/api/clients/", data, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        })
+            console.log(result);
+        alert(`De gebruiker is opgeslagen onder id: ${result.data}`)
+        } catch (e) {
             console.error(e);
         }
     }
 
-     return (
+    return (
         <>
             <div className="inner-container">
                 <h3>Receptie Pagina</h3>
@@ -58,24 +67,27 @@ function ReceptionPage() {
                         <form
                             onSubmit={handleClientSearch}
                         >
-                            <label
-                                htmlFor="client">
-                                Zoek client
-                                <input
-                                    type="text"
-                                    id="client"
-                                    onChange={(e) => setClientSearchName(e.target.value)}
-                                    value={clientSearchName}
-                                />
-                            </label>
-                            <button
-                                type="submit"
-                            >Zoek
-                            </button>
+                            <fieldset>
+                                <legend>Zoek Client</legend>
+                                <label
+                                    htmlFor="client">
+                                    <input
+                                        type="text"
+                                        placeholder="achternaam"
+                                        id="client"
+                                        onChange={(e) => setClientSearchName(e.target.value)}
+                                        value={clientSearchName}
+                                    />
+                                </label>
+                                <button
+                                    type="submit"
+                                >Zoek
+                                </button>
+                            </fieldset>
                         </form>
                         <div>
                             {/*{Object.keys(client).length > 0 ?*/}
-                                {client ?
+                            {client ?
                                 <>
                                     <table className="client-table">
                                         <tbody>
@@ -112,27 +124,69 @@ function ReceptionPage() {
                     // <Tab Two new client/>
                     <>
                         <form
-                            onSubmit={handleNewClient}
+                            onSubmit={handleSubmit(handleNewClient)}
                         >
-                            <label
-                                htmlFor="clientnew">
-                                Nieuwe Client
-                                <input
-                                    type="text"
-                                    id="newClient"
-                                    onChange={(e) => setClientSearchName(e.target.value)}
-                                    value={clientSearchName}
-                                />
-                            </label>
-                            <button
-                                type="submit"
-                            >Zoek
-                            </button>
+                            <fieldset>
+                                <legend>Nieuwe Client</legend>
+                                <label
+                                    htmlFor="clientnew">
+                                    <input
+                                        type="text"
+                                        id="newClientFirstName"
+                                        placeholder="voornaam"
+                                        {...register("firstName")}
+                                    />
+                                    <input
+                                        type="text"
+                                        id="newClientLastName"
+                                        placeholder="achternaam"
+                                        {...register("lastName")}
+                                    />
+                                    <input
+                                        type="text"
+                                        id="newClientStreetName"
+                                        placeholder="straat naam"
+                                        {...register("streetName")}
+                                    />
+                                    <input
+                                        type="number"
+                                        id="newClientHouseNumber"
+                                        placeholder="huisnummer"
+                                        {...register("houseNumber")}
+                                    />
+                                    <input
+                                        type="text"
+                                        id="newClientHouseNumberAddition"
+                                        placeholder="huisnummer toevoeging"
+                                        {...register("houseNumberAddition")}
+                                    />
+                                    <input
+                                        type="text"
+                                        id="newClientPostalCode"
+                                        placeholder="postcode"
+                                        {...register("postalCode")}
+                                    />
+                                    <input
+                                        type="text"
+                                        id="newClientHomeTown"
+                                        placeholder="woonplaats"
+                                        {...register("homeTown")}
+                                    />
+                                    <input
+                                        type="tel"
+                                        id="newClientPhoneNumber"
+                                        placeholder="telefoonummer"
+                                        {...register("phoneNumber")}
+                                    />
+                                </label>
+                                <button
+                                    type="submit"
+                                >bevestig
+                                </button>
+                            </fieldset>
                         </form>
                     </>
                 }
-
-
             </div>
         </>
     );
