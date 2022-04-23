@@ -7,7 +7,7 @@ import DisplayClientTable from "../../components/reception/DisplayClientTable";
 function MechanicPageCarinspection() {
 
     const {carinspectionId} = useParams();
-    const [carinspection, setCarinspection] = useState({});
+    const [carinspection, setCarinspection] = useState(null);
 
 
     useEffect(() => {
@@ -22,7 +22,9 @@ function MechanicPageCarinspection() {
                     }
                 });
                 console.log(result);
-                setCarinspection(result);
+                setCarinspection(result.data);
+
+
 
             } catch (e) {
                 console.error(e);
@@ -37,15 +39,15 @@ function MechanicPageCarinspection() {
 
     return (
         <>
-            {carinspection ?
+            {carinspection &&
                 <>
                     <h3>Keuringsdetails</h3>
                     <div>
-                        <DisplayClientTable client={carinspection.data.client}/>
-                        <p>Status: {carinspection.data.status.name}</p>
+                        <DisplayClientTable client={carinspection.client}/>
+                        <p>Status: {carinspection.status.name}</p>
                     </div>
                 </>
-                : <p></p>}
+            }
         </>
 
     );
