@@ -10,3 +10,12 @@
     background-color: antiquewhite;
     color: black;
 }
+
+.carinspection-client-info{
+    font-weight: bold;
+    padding-bottom: 20px;
+    padding-left: 5px;
+    padding-top: 20px;
+    background-color: lightblue;
+    width: 100%;
+}
