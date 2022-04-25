@@ -1,6 +1,5 @@
 .inspection-table{
-    max-width: 300px;
-
+    max-width: 50%;
 }
 
 .inspection-table th{
@@ -18,4 +17,42 @@
     padding-top: 20px;
     background-color: lightblue;
     width: 100%;
+}
+.carpart-table{
+    max-width: 50%;
+    text-align: left;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 5px;
+    background-color: antiquewhite;
+    color: black;
+}
+.inspection-button{
+    margin-top: 10px;
+}
+button + button{
+    margin-left: 5px;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    margin-left: 10px;
+}
+
+.tooltip .tooltiptext {
+    font-size: small;
+    visibility: hidden;
+    width: 150px;
+    background-color: lightblue;
+    color: black;
+    text-align: left;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }

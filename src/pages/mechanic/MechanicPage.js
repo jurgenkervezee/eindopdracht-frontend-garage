@@ -19,9 +19,7 @@ function MechanicPage() {
                         Authorization: `Bearer ${token}`,
                     }
                 });
-                console.log(result);
                 setCarinspectionList(result.data);
-                console.log(carinspectionlist);
 
             } catch (e) {
                 console.error(e);
@@ -35,7 +33,7 @@ function MechanicPage() {
     return (
         <>
             <header className="inner-container">
-                <h3>Werkplaats Pagina</h3>
+                <h3 className="page-header-title">Werkplaats Pagina</h3>
                 <nav className="navbar">
                 </nav>
             </header>

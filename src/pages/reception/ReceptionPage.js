@@ -26,6 +26,9 @@ function ReceptionPage() {
                     Authorization: `Bearer ${token}`,
                 }
             });
+            if(result.status === 200 && result.data=== ""){
+                console.log("Niets gevonden")
+            }
             console.log(result);
             setClient(result.data);
         } catch (e) {
@@ -91,7 +94,7 @@ function ReceptionPage() {
                                     <DisplayClientTable client={client}/>
                                 </>
                                 :
-                                <p>...</p>
+                                <p>Geen resultaten</p>
                             }
                         </div>
                     </>
@@ -162,7 +165,7 @@ function ReceptionPage() {
                                         type="tel"
                                         id="newClientPhoneNumber"
                                         placeholder="telefoonummer"
-                                        {...register("phoneNumber", {required: "Het veld telefoonnummer mag niet leeg zijn"})}
+                                        {...register("telephoneNumber", {required: "Het veld telefoonnummer mag niet leeg zijn"})}
                                     />
                                 </label>
                                 <button
