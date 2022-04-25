@@ -1,10 +1,7 @@
 import {useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import DisplayClientTable from "../../components/reception/DisplayClientTable";
 import DisplayClientCarinspection from "../../components/carinspection/DisplayClientCarinspection";
-import CarinspectionListElement from "../../components/carinspection/CarinspectionListElement";
-
 
 function MechanicPageCarinspection() {
 
@@ -14,7 +11,8 @@ function MechanicPageCarinspection() {
     // const [repairActivityList, setRepairActivityList] = useState(null);
     const [carpartList, setCarpartList] = useState(null);
     const [repairPrice, setRepairPrice] = useState(null);
-    const [carpartsUsed, setCarpartsUsed] = useState(null);
+
+    // useEffect()
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -27,7 +25,7 @@ function MechanicPageCarinspection() {
                         Authorization: `Bearer ${token}`,
                     }
                 });
-                // console.log(result);
+                console.log(result);
                 setCarinspection(result.data);
 
             } catch (e) {
@@ -108,14 +106,14 @@ function MechanicPageCarinspection() {
                     }
                 });
 
-            if(result.status === 204){
-                alert(`Het onderde(e)l(en) ${amount} ${description} is/zijn opgeslagen in de database`)
+            if (result.status === 204) {
+                alert(`Het onderde(e)l(en) ${amount} ${description} is/zijn opgeslagen in de database`);
             }
             console.log(result);
 
         } catch (e) {
-            if(e.response.status === 409){
-                alert(`De status van de carinspectie is niet correct voor deze handeling.`)
+            if (e.response.status === 409) {
+                alert(`De status van de carinspectie is niet correct voor deze handeling.`);
             }
             console.error(e);
         }
@@ -125,28 +123,31 @@ function MechanicPageCarinspection() {
         <>
             {carinspection &&
                 <>
-                    <h3>Keuringsdetails</h3>
-                    <div>
-                        <DisplayClientCarinspection
-                            client={carinspection.client}
-                            status={carinspection.status}
-                        />
-                    </div>
-                    <table className="carpart-table">
-                        <thead>
-                        <tr>
-                            <th>Auto Onderdeel</th>
-                            <th>Prijs</th>
-                            <th>Voegtoe</th>
-                            <th>Aantal</th>
-                            <th>Bevestig</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {carpartList.map((carpart, index) => {
-                            return (
-                                <>
-                                        <tr >
+                    <div className="inner-container">
+                        <h3 className="page-header-title">Keuringsdetails</h3>
+                        <nav className="navbar">
+                            <div>
+                                <DisplayClientCarinspection
+                                    client={carinspection.client}
+                                    status={carinspection.status}
+                                />
+                            </div>
+                        </nav>
+                        <table className="carpart-table">
+                            <thead>
+                            <tr>
+                                <th>Auto Onderdeel</th>
+                                <th>Prijs</th>
+                                <th>Voegtoe</th>
+                                <th>Aantal</th>
+                                <th>Bevestig</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {carpartList.map((carpart, index) => {
+                                return (
+                                    <>
+                                        <tr key={`${carpart.description} - ${index}`}>
                                             <td>{carpart.description}</td>
                                             <td>{carpart.price}</td>
                                             <td>
@@ -177,29 +178,45 @@ function MechanicPageCarinspection() {
                                                 </button>
                                             </td>
                                         </tr>
-                                </>
-                            );
-                        })}
-                        </tbody>
-                    </table>
-                    <div>
-                        <button
-                            className="inspection-button"
-                            onClick={handleGetPrice}
-                        >
-                            Inspectie Gereed en toon prijs
-                        </button>
-                        <div className="tooltip">ℹ️
-                            <div className="tooltiptext">️Status Open is voor keuring
-                                , status Inspected is na Keuring. Na de keuring kan er ook geen prijs meer worden
-                                getoond
+                                    </>
+                                );
+                            })}
+                            </tbody>
+                        </table>
+                        <div>
+                            <button
+                                className="inspection-button"
+                                onClick={handleGetPrice}
+                            >
+                                Inspectie Gereed en toon prijs
+                            </button>
+                            <div className="tooltip">ℹ️
+                                <div className="tooltiptext">️Status Open is voor keuring
+                                    , status Inspected is na Keuring. Na de keuring kan er ook geen prijs meer worden
+                                    getoond
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    {repairPrice &&
-                        <h3>Totaal Prijs: € {repairPrice} </h3>
-                    }
+                        {repairPrice &&
+                            <>
+                                <h3>Totaal Prijs: € {repairPrice} </h3>
+                                <div>
+                                    <button
+                                        type="button"
+                                    >Repareer
+                                    </button>
+                                    <button
+                                        type="button"
+                                    >Repareer Niet
+                                    </button>
+                                </div>
+
+                            </>
+
+                        }
+
+                    </div>
                 </>
             }
         </>

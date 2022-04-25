@@ -8,7 +8,7 @@
 }
 
 h3{
-    margin: 10px;
+    /*margin: 10px;*/
 }
 
 form {
@@ -23,4 +23,6 @@ form {
 
 .page-header-title{
     background-color: lightblue;
+    padding-left: 5px;
+    border-radius: 4px;
 }

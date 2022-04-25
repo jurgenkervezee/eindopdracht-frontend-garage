@@ -11,6 +11,9 @@ function HomePage() {
         <>
             <div className="inner-container">
 
+                <h3 className="page-header-title">Home Pagina</h3>
+                <nav className="navbar">
+                </nav>
                 <PageHeader
                     logo={logo}
                     logoName="homepageLogo"

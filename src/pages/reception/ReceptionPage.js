@@ -1,8 +1,9 @@
 import './Reception.css';
 import React, {useState} from 'react';
 import axios from "axios";
-import {useForm } from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import DisplayClientTable from "../../components/reception/DisplayClientTable";
+import FormatDate from "../../helper/FormatDate";
 
 
 function ReceptionPage() {
@@ -13,7 +14,7 @@ function ReceptionPage() {
     const [clientSearchName, setClientSearchName] = useState('');
     const [client, setClient] = useState(null);
     //state for newClient
-    const { handleSubmit, formState: { errors }, register } = useForm();
+    const {handleSubmit, formState: {errors}, register} = useForm();
 
     async function handleClientSearch(e) {
         e.preventDefault();
@@ -26,8 +27,8 @@ function ReceptionPage() {
                     Authorization: `Bearer ${token}`,
                 }
             });
-            if(result.status === 200 && result.data=== ""){
-                console.log("Niets gevonden")
+            if (result.status === 200 && result.data === "") {
+                console.log("Niets gevonden");
             }
             console.log(result);
             setClient(result.data);
@@ -38,30 +39,54 @@ function ReceptionPage() {
 
     async function handleNewClient(data) {
         const token = localStorage.getItem('token');
-        console.log(data);
 
         try {
-        const result = await axios.post("http://localhost:8080/api/clients/", data, {
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-            }
-        })
+            const result = await axios.post("http://localhost:8080/api/clients/", data, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
             console.log(result);
-        alert(`De gebruiker is succesvol opgeslagen onder id: ${result.data}`)
+            alert(`De gebruiker is succesvol opgeslagen onder id: ${result.data}`);
         } catch (e) {
             console.error(e);
         }
     }
 
+    async function handleAppointment(data){
+        const token = localStorage.getItem('token');
+        console.log(data);
+        try {
+
+            const temp = (FormatDate(data.date))
+            const formatedDate = {
+                ...data,
+                date: {temp},
+            }
+            const result = await axios.post(`http://localhost:8080/api/clients/appointment/${client.id}`,
+                {formatedDate},
+                {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+            console.log(result);
+            alert(`De afspraak is opgeslagen onder id: ${result}`);
+        } catch (e) {
+            console.error(e);
+        }
+
+    }
     return (
         <>
             <div className="inner-container">
-                <h3>Receptie Pagina</h3>
+                <h3 className="page-header-title">Receptie Pagina</h3>
                 <nav className="navbar">
 
-                    <button onClick={() => setActiveTab('tab-1')}>ZOEK</button>
-                    <button onClick={() => setActiveTab('tab-2')}>NIEUW</button>
+                    <button onClick={() => setActiveTab('tab-1')}>Zoek</button>
+                    <button onClick={() => setActiveTab('tab-2')}>Nieuw</button>
                 </nav>
 
                 {activeTab === 'tab-1' &&
@@ -92,6 +117,28 @@ function ReceptionPage() {
                             {client ?
                                 <>
                                     <DisplayClientTable client={client}/>
+
+                                    <form
+                                        onSubmit={handleSubmit(handleAppointment)}>
+                                        <fieldset>
+                                            <legend>Maak Afspraak </legend>
+                                                <label htmlFor="maakAppointment">
+                                                    {errors.date && <p className="validation-alert">{errors.date.message}</p>}
+                                                    <input
+                                                        type="date"
+                                                        id="date"
+                                                        placeholder="voornaam"
+                                                        {...register("date", {required: "Het datum veld mag niet leeg zijn"})}
+                                                    />
+                                                    <button
+                                                        type="submit"
+                                                    >Bevestig
+                                                    </button>
+                                                </label>
+
+                                        </fieldset>
+
+                                    </form>
                                 </>
                                 :
                                 <p>Geen resultaten</p>
@@ -99,8 +146,6 @@ function ReceptionPage() {
                         </div>
                     </>
                 }
-
-
                 {activeTab === 'tab-2' &&
                     // <Tab Two new client/>
                     <>
@@ -126,14 +171,16 @@ function ReceptionPage() {
                                         placeholder="achternaam"
                                         {...register("lastName", {required: "Het veld achternaam mag niet leeg zijn"})}
                                     />
-                                    {errors.streetName && <p className="validation-alert">{errors.streetName.message}</p>}
+                                    {errors.streetName &&
+                                        <p className="validation-alert">{errors.streetName.message}</p>}
                                     <input
                                         type="text"
                                         id="newClientStreetName"
                                         placeholder="straat naam"
                                         {...register("streetName", {required: "Het veld straatnaam mag niet leeg zijn"})}
                                     />
-                                    {errors.houseNumber && <p className="validation-alert">{errors.houseNumber.message}</p>}
+                                    {errors.houseNumber &&
+                                        <p className="validation-alert">{errors.houseNumber.message}</p>}
                                     <input
                                         type="number"
                                         id="newClientHouseNumber"
@@ -146,7 +193,8 @@ function ReceptionPage() {
                                         placeholder="huisnummer toevoeging"
                                         {...register("houseNumberAddition")}
                                     />
-                                    {errors.postalCode && <p className="validation-alert">{errors.postalCode.message}</p>}
+                                    {errors.postalCode &&
+                                        <p className="validation-alert">{errors.postalCode.message}</p>}
                                     <input
                                         type="text"
                                         id="newClientPostalCode"
@@ -160,7 +208,8 @@ function ReceptionPage() {
                                         placeholder="woonplaats"
                                         {...register("homeTown", {required: "Het veld woonplaats mag niet leeg zijn"})}
                                     />
-                                    {errors.phoneNumber && <p className="validation-alert">{errors.phoneNumber.message}</p>}
+                                    {errors.phoneNumber &&
+                                        <p className="validation-alert">{errors.phoneNumber.message}</p>}
                                     <input
                                         type="tel"
                                         id="newClientPhoneNumber"

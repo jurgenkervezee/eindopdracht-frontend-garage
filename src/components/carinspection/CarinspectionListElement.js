@@ -10,6 +10,7 @@ function CarinspectionListElement({data}){
             <td>{data.id}</td>
             <td>{data.client.firstName} {data.client.lastName}</td>
             <td>{FormatDate(data.date)}</td>
+            <td>{data.status.name}</td>
             <td><Link to={`mechanic/${data.id}`}>inspect</Link></td>
         </tr>
     );

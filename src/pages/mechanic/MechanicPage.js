@@ -7,7 +7,7 @@ function MechanicPage() {
     const [carinspectionlist, setCarinspectionList] = useState({});
 
 
-    useEffect(()=> {
+    useEffect(() => {
 
         async function handleCarinspectionList() {
             const token = localStorage.getItem('token');
@@ -19,15 +19,20 @@ function MechanicPage() {
                         Authorization: `Bearer ${token}`,
                     }
                 });
-                setCarinspectionList(result.data);
+
+                const filteredList = result.data.filter((carinspection) => {
+                    return carinspection.status.name === 'OPEN';
+                });
+
+                setCarinspectionList(filteredList);
 
             } catch (e) {
                 console.error(e);
             }
         }
-        handleCarinspectionList();
-    }, [])
 
+        handleCarinspectionList();
+    }, []);
 
 
     return (
@@ -35,11 +40,9 @@ function MechanicPage() {
             <header className="inner-container">
                 <h3 className="page-header-title">Werkplaats Pagina</h3>
                 <nav className="navbar">
+                    <h3>KeuringsLijst</h3>
                 </nav>
             </header>
-
-            <h3>KeuringsLijst</h3>
-
             {carinspectionlist.length > 0 &&
                 <>
                     <table className="inspection-table">
@@ -48,6 +51,7 @@ function MechanicPage() {
                             <th>Id</th>
                             <th>Naam</th>
                             <th>Datum</th>
+                            <th>Status</th>
                             <th>Keur</th>
                         </tr>
                         </thead>

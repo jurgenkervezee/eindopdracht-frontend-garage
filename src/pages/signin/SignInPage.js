@@ -40,7 +40,10 @@ function SignInPage() {
 
     return (
         <>
-            <h3>Login Pagina</h3>
+            <h3 className="page-header-title">Login Pagina</h3>
+            <nav className="navbar">
+
+            </nav>
             <div>
                 <form
                     onSubmit={handleSubmit}

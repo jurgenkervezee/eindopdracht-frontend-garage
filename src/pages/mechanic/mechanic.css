@@ -2,12 +2,20 @@
     max-width: 50%;
 }
 
-.inspection-table th{
+.inspection-table, .carpart-table{
+    max-width: 50%;
     text-align: left;
+    padding-left: 5px;
     padding-top: 12px;
     padding-bottom: 12px;
-    background-color: antiquewhite;
+    background-color: lightblue;
     color: black;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+th{
+    /*text-align: left;*/
 }
 
 .carinspection-client-info{
@@ -15,18 +23,9 @@
     padding-bottom: 20px;
     padding-left: 5px;
     padding-top: 20px;
-    background-color: lightblue;
     width: 100%;
 }
-.carpart-table{
-    max-width: 50%;
-    text-align: left;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-left: 5px;
-    background-color: antiquewhite;
-    color: black;
-}
+
 .inspection-button{
     margin-top: 10px;
 }
