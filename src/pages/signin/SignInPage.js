@@ -16,10 +16,8 @@ function SignInPage() {
 
         try {
             const result = await axios.post('http://localhost:8080/api/auth/signin', {
-
                 username: userName,
                 password: password,
-
             });
             login(result.data);
             const role = result.data.roles[0];
@@ -36,7 +34,6 @@ function SignInPage() {
             console.error(e);
         }
     }
-
 
     return (
         <>

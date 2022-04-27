@@ -8,7 +8,6 @@ function MechanicPage() {
 
 
     useEffect(() => {
-
         async function handleCarinspectionList() {
             const token = localStorage.getItem('token');
 
@@ -23,6 +22,7 @@ function MechanicPage() {
                 const filteredList = result.data.filter((carinspection) => {
                     return carinspection.status.name === 'OPEN';
                 });
+                console.log(filteredList);
 
                 setCarinspectionList(filteredList);
 
@@ -40,8 +40,9 @@ function MechanicPage() {
             <header className="inner-container">
                 <h3 className="page-header-title">Werkplaats Pagina</h3>
                 <nav className="navbar">
-                    <h3>KeuringsLijst</h3>
+
                 </nav>
+                <h3>KeuringsLijst</h3>
             </header>
             {carinspectionlist.length > 0 &&
                 <>

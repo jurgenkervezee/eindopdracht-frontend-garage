@@ -3,25 +3,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px
-
+    padding: 5px;
+    background-color: #007cb9;
+    color: white;
 }
+
 ul {
     list-style-type: none;
     flex-basis: 550px;
     display: flex;
-    /*justify-content: space-between;*/
     align-items: center;
 }
+
 li + li{
     margin-left: 8px;
-
 }
+
 nav {
     width: 100%;
-    background-color: antiquewhite;
     display: flex;
-    /*justify-content: center;*/
     height: 60px;
     padding-left: 5px;
     align-items: center;
@@ -29,4 +29,8 @@ nav {
 
 .active-link {
     background-color: lightblue;
+}
+
+.header-menu{
+    color: white;
 }

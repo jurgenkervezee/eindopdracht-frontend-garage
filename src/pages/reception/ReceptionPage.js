@@ -135,9 +135,7 @@ function ReceptionPage() {
                                                     >Bevestig
                                                     </button>
                                                 </label>
-
                                         </fieldset>
-
                                     </form>
                                 </>
                                 :

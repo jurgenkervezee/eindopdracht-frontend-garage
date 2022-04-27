@@ -12,8 +12,6 @@ function MechanicPageCarinspection() {
     const [carpartList, setCarpartList] = useState(null);
     const [repairPrice, setRepairPrice] = useState(null);
 
-    // useEffect()
-
     useEffect(() => {
         const token = localStorage.getItem('token');
 
@@ -53,7 +51,6 @@ function MechanicPageCarinspection() {
                     return temp;
                 });
                 setCarpartList(newList);
-
             } catch (e) {
                 console.error(e);
             }
@@ -89,7 +86,6 @@ function MechanicPageCarinspection() {
 
     function handleSubClick(index) {
         let newArray = [...carpartList];
-
         newArray[index].amount = carpartList[index].amount - 1;
         setCarpartList(newArray);
     }
