@@ -7,7 +7,7 @@ import ReceptionPage from '../reception/ReceptionPage';
 import SignInPage from "../signin/SignInPage";
 import MechanicPage from "../mechanic/MechanicPage";
 import MechanicPageCarinspection from "../mechanic/MechanicPageCarinspection";
-import CashierPage from "../CashierPage";
+import CashierPage from "../cashier/CashierPage";
 import TopMenu from "../../components/topmenu/TopMenu";
 import {AuthContext} from "../../context/AuthContext";
 

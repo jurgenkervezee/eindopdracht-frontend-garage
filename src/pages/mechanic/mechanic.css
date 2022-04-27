@@ -3,33 +3,75 @@
 }
 
 .inspection-table, .carpart-table{
-    max-width: 50%;
+    max-width: 75%;
+    border-collapse: collapse;
+    margin-top: 40px;
     text-align: left;
-    padding-left: 5px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    background-color: lightblue;
+    padding: 8px;
     color: black;
     border-radius: 4px;
-    margin-top: 10px;
+    border-bottom: 1px solid #ddd
 }
 
 th{
    font-weight: bold;
 }
 
+.inspect-link:hover {
+    color: #007cb9;
+ font-weight: bold;
+}
+
+.table-number{
+    text-align: right;
+    padding-right: 40px;
+}
+
 .carinspection-client-info{
     font-weight: bold;
     padding-bottom: 20px;
-    padding-left: 5px;
     padding-top: 20px;
     width: 100%;
 }
 
 .inspection-button{
-    margin-top: 10px;
+    background-color: #007cb9;
+    border: solid 2px #ffff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 40px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+.inspection-button:hover{
+    background-color: #ffff;
+    color: black;
+    border: solid 2px #007cb9;
 }
 button + button{
+    margin-left: 5px;
+}
+.add-sub-bttn, .confirm-carpart{
+    border: solid 2px #ffff;
+    background-color: #ffff;
+    transition-duration: 0.4s;
+
+}
+.add-sub-bttn:hover{
+    color: #007cb9;
+    border: solid 2px #007cb9;
+    font-weight: bold;
+}
+.confirm-carpart:hover{
+    color: #007cb9;
+    border: solid 2px #007cb9;
+}
+
+.total-price{
+    margin-top: 10px;
+    margin-bottom: 10px;
     margin-left: 5px;
 }
 .tooltip {
@@ -43,8 +85,8 @@ button + button{
     font-size: small;
     visibility: hidden;
     width: 150px;
-    background-color: lightblue;
-    color: black;
+    background-color: #007cb9;
+    color: #ffff;
     text-align: left;
     border-radius: 6px;
     padding: 5px;
@@ -55,3 +97,4 @@ button + button{
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+

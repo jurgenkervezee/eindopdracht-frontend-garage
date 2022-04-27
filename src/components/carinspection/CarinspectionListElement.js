@@ -7,11 +7,10 @@ function CarinspectionListElement({data}){
     return (
 
         <tr>
-            <td>{data.id}</td>
             <td>{data.client.firstName} {data.client.lastName}</td>
             <td>{FormatDate(data.date)}</td>
             <td>{data.status.name}</td>
-            <td><Link to={`mechanic/${data.id}`}>inspect</Link></td>
+            <td className="inspect-link"><Link  to={`mechanic/${data.id}`}>inspect</Link></td>
         </tr>
     );
 }
