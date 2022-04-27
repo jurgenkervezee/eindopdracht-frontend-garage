@@ -5,7 +5,6 @@ import {useForm} from 'react-hook-form';
 import DisplayClientTable from "../../components/reception/DisplayClientTable";
 import FormatDate from "../../helper/FormatDate";
 
-
 function ReceptionPage() {
 
     //tabs
@@ -77,7 +76,9 @@ function ReceptionPage() {
             console.log(result);
             alert(`De afspraak is opgeslagen onder id: ${result}`);
         } catch (e) {
-            console.error(e);
+            if (e.response.status === 409) {
+                alert(`De afspraak mag niet in het verleden worden gemaakt`);
+            }
         }
 
     }

@@ -2,6 +2,7 @@ import {useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import DisplayClientCarinspection from "../../components/carinspection/DisplayClientCarinspection";
+import UniqueNumber from "../../helper/UniqueNumber";
 
 function MechanicPageCarinspection() {
 
@@ -155,6 +156,7 @@ function MechanicPageCarinspection() {
                         <nav className="navbar">
                             <div>
                                 <DisplayClientCarinspection
+                                    key={UniqueNumber(carinspection.client.id)}
                                     client={carinspection.client}
                                     status={carinspection.status}
                                 />
@@ -174,7 +176,7 @@ function MechanicPageCarinspection() {
                             {carpartList.map((carpart, index) => {
                                 return (
                                     <>
-                                        <tr key={`${carpart.description} - ${index}`}>
+                                        <tr key={UniqueNumber(index)}>
                                             <td>{carpart.description}</td>
                                             <td className="table-number">{carpart.price}</td>
                                             <td>
@@ -228,7 +230,6 @@ function MechanicPageCarinspection() {
                                 </div>
                             </div>
                         </div>
-
                         {repairPrice &&
                             <>
                                 <h3 className="total-price">Totaal Prijs: € {repairPrice} </h3>
@@ -246,11 +247,8 @@ function MechanicPageCarinspection() {
                                     >Repareer Niet
                                     </button>
                                 </div>
-
                             </>
-
                         }
-
                     </div>
                 </>
             }
