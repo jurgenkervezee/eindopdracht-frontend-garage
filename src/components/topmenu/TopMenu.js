@@ -16,16 +16,25 @@ function TopMenu() {
                     <h4>GarageBedrijf Frontend</h4>
                     <ul>
                         <li>
-                            <NavLink to="/" exact activeClassName="active-link">Home</NavLink>
+                            <NavLink to="/" exact activeClassName="active-link" className="header-menu">Home</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/reception" exact activeClassName="active-link">Reception</NavLink>
+                            <NavLink to="/reception" exact activeClassName="active-link" className="header-menu">Reception</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/mechanic" exact activeClassName="active-link">Monteur</NavLink>
+                            <NavLink
+                                to="/mechanic"
+                                exact
+                                activeClassName="active-link"
+                                className="header-menu"
+                            >Monteur</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/cashier" exact activeClassName="active-link">Betalen</NavLink>
+                            <NavLink
+                                to="/cashier"
+                                exact
+                                activeClassName="active-link"
+                                className="header-menu">Betalen</NavLink>
                         </li>
                     </ul>
                     <div>

@@ -16,10 +16,8 @@ function SignInPage() {
 
         try {
             const result = await axios.post('http://localhost:8080/api/auth/signin', {
-
                 username: userName,
                 password: password,
-
             });
             login(result.data);
             const role = result.data.roles[0];
@@ -37,10 +35,12 @@ function SignInPage() {
         }
     }
 
-
     return (
         <>
-            <h3>Login Pagina</h3>
+            <h3 className="page-header-title">Login Pagina</h3>
+            <nav className="navbar">
+
+            </nav>
             <div>
                 <form
                     onSubmit={handleSubmit}

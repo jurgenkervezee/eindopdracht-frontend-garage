@@ -11,7 +11,7 @@ li {
 
 li a {
     display: block;
-    color: black;
+    /*color: black;*/
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -27,15 +27,22 @@ button{
 
 /*client output*/
 .client-table{
+    display: flex;
     max-width: 300px;
-    background-color: aliceblue;
+    background-color: lightblue;
     margin-top: 10px;
+    padding: 10px;
+    border-radius: 4px;
 }
 
 tr {
     border-bottom: 1px solid #ddd;
 }
 
-tr:hover {
-    background-color: #D6EEEE;
+.validation-alert{
+    font-size: small;
+    color: red;
 }
+/*tr:hover {*/
+/*    background-color: #D6EEEE;*/
+/*}*/

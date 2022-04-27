@@ -62,7 +62,6 @@ function signOut(){
         })
 }
 
-
     const contextData = {
         isAuth: isAuth.isAuth,
         user: isAuth.user,
@@ -71,10 +70,8 @@ function signOut(){
         logout: signOut,
     };
 
-
     return (
         <AuthContext.Provider value={contextData}>
-            {/*{children}*/}
             {isAuth.status === 'done' ? children : <p>Loading...</p> }
         </AuthContext.Provider>
     );
