@@ -5,26 +5,20 @@
     flex-direction: column;
 }
 
-h3{
-    /*margin: 10px;*/
+.page-header-title{
+    margin-top: 30px;
 }
 
+/*standard form for entire app*/
 form {
+    color: #ffff;
     display: flex;
     flex-direction: column;
-    background-color: lightblue;
+    border: solid 1px black;
+    background-color: #007cb9;
     padding: 20px;
     max-width: 300px;
     border-radius: 4px;
     margin-top: 10px;
 }
 
-.page-header-title{
-    padding-left: 5px;
-    border-radius: 4px;
-}
-
-.navbar{
-    border-bottom: 2px black;
-
-}

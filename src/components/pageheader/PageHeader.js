@@ -6,7 +6,6 @@ import "./pageheader.css";
 function PageHeader({logo,logoName }){
     return(
       <div className="title-container">
-
           <img
               src={logo}
               alt={logoName}

@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./Displayclient.css"
 function DisplayClientCarinspection({client, status}) {
 
     return (

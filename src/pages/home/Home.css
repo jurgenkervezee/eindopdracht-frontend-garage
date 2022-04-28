@@ -1,6 +1,9 @@
 .inner-container{
     display: flex;
     flex-direction: column;
-    /*align-items: center;*/
+    margin-left: 20px;
+}
 
+.home-content{
+    text-align: center;
 }

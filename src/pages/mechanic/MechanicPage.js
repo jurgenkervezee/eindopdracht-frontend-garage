@@ -37,41 +37,39 @@ function MechanicPage() {
 
     return (
         <>
-            <header className="inner-container">
+            <div className="inner-container">
                 <h3 className="page-header-title">Werkplaats Pagina</h3>
                 <nav className="navbar">
 
                 </nav>
-                <h3>KeuringsLijst</h3>
-            </header>
-            {carinspectionlist.length > 0 &&
-                <>
-                    <table className="inspection-table">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Naam</th>
-                            <th>Datum</th>
-                            <th>Status</th>
-                            <th>Keur</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {carinspectionlist.map((inspection) => {
-                            return (
-                                <>
-                                    <CarinspectionListElement
-                                        key={`${inspection.id} + ${inspection.client.telephoneNumber}`}
-                                        data={inspection}
-                                    />
-                                </>
-                            );
-                        })}
-                        </tbody>
-                    </table>
-                </>
 
-            }
+
+                {carinspectionlist.length > 0 &&
+                    <>
+                        <h3>KeuringsLijst</h3>
+                        <table className="inspection-table">
+                            <thead>
+                            <tr>
+                                <th>Naam</th>
+                                <th>Datum</th>
+                                <th>Status</th>
+                                <th>Keur</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {carinspectionlist.map((inspection) => {
+                                return (
+                                        <CarinspectionListElement
+                                            key={`${inspection.id} + ${inspection.client.telephoneNumber}`}
+                                            data={inspection}
+                                        />
+                                );
+                            })}
+                            </tbody>
+                        </table>
+                    </>
+                }
+            </div>
         </>
     );
 }
