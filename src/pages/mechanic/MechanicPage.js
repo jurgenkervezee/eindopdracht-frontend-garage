@@ -59,12 +59,10 @@ function MechanicPage() {
                             <tbody>
                             {carinspectionlist.map((inspection) => {
                                 return (
-                                    <>
                                         <CarinspectionListElement
                                             key={`${inspection.id} + ${inspection.client.telephoneNumber}`}
                                             data={inspection}
                                         />
-                                    </>
                                 );
                             })}
                             </tbody>

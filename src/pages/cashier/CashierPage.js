@@ -1,11 +1,6 @@
 import React from "react";
 
-
-
 function CashierPage() {
-
-
-
     return (
         <>
             <div className="inner-container">
@@ -20,5 +15,4 @@ function CashierPage() {
         </>
     );
 }
-
 export default CashierPage;

@@ -6,23 +6,33 @@ Gemaakt door Jurgen Kervezee
 Deze frontend applicatie is geschreven voor de Backend die vorig jaar is opgeleverd. 
 Bij het inleveren van de Frontend applicatie zal ook de backend applicatie geleverd worden. 
 
-### installeren van de applicatie
-
-### starten van de applicatie
-
-### users om mee te kunnen testen. 
-Op dit moment is de registreer functie van de backend nog niet werkend. Dat staat op de backlog. 
-Je kunt de volgende users gebruiken om in te loggen. 
+### users om mee te kunnen testen.
+Op dit moment is de registreer functie van de backend nog niet werkend. Dat staat op de backlog.
+Je kunt de volgende users gebruiken om in te loggen.
 
 - **receptie**
-  - *username:   receptie-test* 
+  - *username:   receptie-test*
   - *wachtwoord: 123456*
 - **monteur**
-    - *username:   mechanic-test*
-    - *wachtwoord: 123456*
+  - *username:   mechanic-test*
+  - *wachtwoord: 123456*
 - **cashiere**
-    - *username:   cashier-test*
-    - *wachtwoord: 123456*
+  - *username:   cashier-test*
+  - *wachtwoord: 123456*
+  
+Let wel op dat de Receptie rol alleen op de Receptie pagina. En de monteur op de monteur pagina etc.   
+
+### installeren van de applicatie
+Nog maken!!
+
+in de backend was een Cors probleem, daarom de volgende annotatie toegevoegd: 
+
+`@CrossOrigin("http://localhost:3000")`
+
+Daarom moet de frontend applicatie ook worden gelaunched van 3000
+### starten van de applicatie
+Nog maken!!
+
 
 met het volgende commando kan de via de terminal in intelliJ de applicatie starten. 
 ### `npm start`

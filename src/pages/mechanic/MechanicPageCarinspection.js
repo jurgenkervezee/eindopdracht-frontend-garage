@@ -2,7 +2,6 @@ import {useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import DisplayClientCarinspection from "../../components/carinspection/DisplayClientCarinspection";
-import UniqueNumber from "../../helper/UniqueNumber";
 
 function MechanicPageCarinspection() {
 
@@ -40,6 +39,7 @@ function MechanicPageCarinspection() {
                         Authorization: `Bearer ${token}`,
                     }
                 });
+                console.log(result);
 
                 //change list to include an extra field for capartsUsed
                 const newList = result.data.map((carpart) => {
@@ -102,7 +102,6 @@ function MechanicPageCarinspection() {
                         Authorization: `Bearer ${token}`,
                     }
                 });
-
             if (result.status === 204) {
                 alert(`Het onderde(e)l(en) ${amount} ${description} is/zijn opgeslagen in de database`);
             }
@@ -116,37 +115,38 @@ function MechanicPageCarinspection() {
         }
     }
 
-    async function handleRepairCar(){
+    async function handleRepairCar() {
         const token = localStorage.getItem('token');
         try {
-            const result = await axios.post(`http://localhost:8080/api/inspections/repaircar/carinspectionid/${carinspectionId}`, {},{
+            const result = await axios.post(`http://localhost:8080/api/inspections/repaircar/carinspectionid/${carinspectionId}`, {}, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
                 }
             });
-            alert("Auto is gerepareerd")
+            alert("Auto is gerepareerd");
             console.log(result);
         } catch (e) {
             console.error(e);
         }
     }
 
-    async function handleDeclineRepairCar(){
+    async function handleDeclineRepairCar() {
         const token = localStorage.getItem('token');
         try {
-            const result = await axios.post(`http://localhost:8080/api/inspections/declinerepair/${carinspectionId}`, {},{
+            const result = await axios.post(`http://localhost:8080/api/inspections/declinerepair/${carinspectionId}`, {}, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
                 }
             });
-            alert("Auto is niet gerepareerd")
+            alert("Auto is niet gerepareerd");
             console.log(result);
         } catch (e) {
             console.error(e);
         }
     }
+
     return (
         <>
             {carinspection &&
@@ -156,7 +156,6 @@ function MechanicPageCarinspection() {
                         <nav className="navbar">
                             <div>
                                 <DisplayClientCarinspection
-                                    key={UniqueNumber(carinspection.client.id)}
                                     client={carinspection.client}
                                     status={carinspection.status}
                                 />
@@ -168,49 +167,49 @@ function MechanicPageCarinspection() {
                                 <th>Auto Onderdeel</th>
                                 <th className="table-number">Prijs</th>
                                 <th>Voegtoe</th>
-                                <th className="table-number" >Aantal</th>
+                                <th className="table-number">Aantal</th>
                                 <th>Bevestig</th>
                             </tr>
                             </thead>
                             <tbody>
                             {carpartList.map((carpart, index) => {
                                 return (
-                                    <>
-                                        <tr key={UniqueNumber(index)}>
-                                            <td>{carpart.description}</td>
-                                            <td className="table-number">{carpart.price}</td>
-                                            <td>
-                                                <button
-                                                    className="add-sub-bttn"
-                                                    type="button"
-                                                    disabled={carpartList[index].amount === 0}
-                                                    onClick={() => {
-                                                        handleSubClick(index);
-                                                    }}
-                                                >-
-                                                </button>
-                                                <button
-                                                    className="add-sub-bttn"
-                                                    type="button"
-                                                    onClick={() => {
-                                                        handleAddClick(index);
-                                                    }}
-                                                >+
-                                                </button>
-                                            </td>
-                                            <td className="table-number">{carpart.amount}</td>
-                                            <td>
-                                                <button
-                                                    className="confirm-carpart"
-                                                    type="button"
-                                                    onClick={() => {
-                                                        handleAddCarpart(carpart.id, carpart.amount, carpart.description);
-                                                    }}
-                                                >bevestig
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </>
+                                    <tr
+                                        key={`${carpart.description}+${carpart.price}`}
+                                    >
+                                        <td>{carpart.description}</td>
+                                        <td className="table-number">{carpart.price}</td>
+                                        <td>
+                                            <button
+                                                className="add-sub-bttn"
+                                                type="button"
+                                                disabled={carpartList[index].amount === 0}
+                                                onClick={() => {
+                                                    handleSubClick(index);
+                                                }}
+                                            >-
+                                            </button>
+                                            <button
+                                                className="add-sub-bttn"
+                                                type="button"
+                                                onClick={() => {
+                                                    handleAddClick(index);
+                                                }}
+                                            >+
+                                            </button>
+                                        </td>
+                                        <td className="table-number">{carpart.amount}</td>
+                                        <td>
+                                            <button
+                                                className="confirm-carpart"
+                                                type="button"
+                                                onClick={() => {
+                                                    handleAddCarpart(carpart.id, carpart.amount, carpart.description);
+                                                }}
+                                            >bevestig
+                                            </button>
+                                        </td>
+                                    </tr>
                                 );
                             })}
                             </tbody>
