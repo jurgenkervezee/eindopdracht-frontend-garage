@@ -124,7 +124,7 @@ function MechanicPageCarinspection() {
                     Authorization: `Bearer ${token}`,
                 }
             });
-            alert("Auto is gerepareerd");
+            alert(`Auto is gerepareerd en heeft id: ${carinspectionId}`);
             console.log(result);
         } catch (e) {
             console.error(e);
@@ -140,7 +140,7 @@ function MechanicPageCarinspection() {
                     Authorization: `Bearer ${token}`,
                 }
             });
-            alert("Auto is niet gerepareerd");
+            alert(`Auto is NIET gerepareerd en heeft id: ${carinspectionId}`);
             console.log(result);
         } catch (e) {
             console.error(e);

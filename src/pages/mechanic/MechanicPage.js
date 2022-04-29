@@ -50,6 +50,7 @@ function MechanicPage() {
                         <table className="inspection-table">
                             <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Naam</th>
                                 <th>Datum</th>
                                 <th>Status</th>
