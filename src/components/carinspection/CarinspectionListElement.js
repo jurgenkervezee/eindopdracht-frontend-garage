@@ -7,6 +7,7 @@ function CarinspectionListElement({data}){
     return (
 
         <tr>
+            <td>{data.id}</td>
             <td>{data.client.firstName} {data.client.lastName}</td>
             <td>{FormatDate(data.date)}</td>
             <td>{data.status.name}</td>

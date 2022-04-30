@@ -9,7 +9,7 @@ function CashierPage() {
                 </nav>
 
                 <div>
-                    Lijst met inspecties klaar voor betaling
+                    Lijst met inspecties klaar voor betaling.
                 </div>
             </div>
         </>

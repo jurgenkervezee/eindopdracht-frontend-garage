@@ -34,15 +34,12 @@ function MechanicPage() {
         handleCarinspectionList();
     }, []);
 
-
     return (
         <>
             <div className="inner-container">
                 <h3 className="page-header-title">Werkplaats Pagina</h3>
                 <nav className="navbar">
-
                 </nav>
-
 
                 {carinspectionlist.length > 0 &&
                     <>
@@ -50,6 +47,7 @@ function MechanicPage() {
                         <table className="inspection-table">
                             <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Naam</th>
                                 <th>Datum</th>
                                 <th>Status</th>

@@ -23,7 +23,7 @@ function MechanicPageCarinspection() {
                         Authorization: `Bearer ${token}`,
                     }
                 });
-                console.log(result);
+                // console.log(result);
                 setCarinspection(result.data);
 
             } catch (e) {
@@ -39,7 +39,7 @@ function MechanicPageCarinspection() {
                         Authorization: `Bearer ${token}`,
                     }
                 });
-                console.log(result);
+                // console.log(result);
 
                 //change list to include an extra field for capartsUsed
                 const newList = result.data.map((carpart) => {
@@ -124,7 +124,7 @@ function MechanicPageCarinspection() {
                     Authorization: `Bearer ${token}`,
                 }
             });
-            alert("Auto is gerepareerd");
+            alert(`Auto is gerepareerd en heeft id: ${carinspectionId}`);
             console.log(result);
         } catch (e) {
             console.error(e);
@@ -140,7 +140,7 @@ function MechanicPageCarinspection() {
                     Authorization: `Bearer ${token}`,
                 }
             });
-            alert("Auto is niet gerepareerd");
+            alert(`Auto is NIET gerepareerd en heeft id: ${carinspectionId}`);
             console.log(result);
         } catch (e) {
             console.error(e);

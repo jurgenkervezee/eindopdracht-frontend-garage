@@ -48,7 +48,7 @@ function ReceptionPage() {
                     Authorization: `Bearer ${token}`,
                 }
             });
-            console.log(result);
+            // console.log(result);
             alert(`De gebruiker is succesvol opgeslagen onder id: ${result.data}`);
         } catch (e) {
             console.error(e);
@@ -77,10 +77,9 @@ function ReceptionPage() {
             alert(`De afspraak is opgeslagen onder id: ${result}`);
         } catch (e) {
             if (e.response.status === 409) {
-                alert(`De afspraak mag niet in het verleden worden gemaakt`);
+                alert(`Er mag geen dubbele afspraak gemaakt worden`);
             }
         }
-
     }
 
     return (
@@ -147,7 +146,7 @@ function ReceptionPage() {
                     </>
                 }
                 {activeTab === 'tab-2' &&
-                    // <Tab Two new client/>
+                    // <Tab new client/>
                     <>
                         <form
                             onSubmit={handleSubmit(handleNewClient)}
