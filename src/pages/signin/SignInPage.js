@@ -43,8 +43,8 @@ function SignInPage() {
             <div className="inner-container">
                 <h3 className="page-header-title">Login Pagina</h3>
                 <nav className="navbar">
-
                 </nav>
+
                 <div>
                     <form
                         onSubmit={handleSubmit}

@@ -1,39 +1,40 @@
 # Getting Started met Garagebedrijf Frontend
 Dit is de eindopdracht voor leerlijn frontend van Novi
-Gemaakt door Jurgen Kervezee
+gemaakt door Jurgen Kervezee
 
 ### Bijgevoegde documenten / links:
 
+Links:
 De laatste versie staat op Github onder de volgende link: [Garage Frontend](https://github.com/jurgenkervezee/eindopdracht-frontend-garage)
 
+Bijgevoegd:
 - Functioneel ontwerp Frontend
 - Verantwoordingsdocument Frontend
 - folder Backend
   - Installatie Handleiding 
   - Technisch Ontwerp van de backend 
-
-
-### Beschikbare Backend 
+  
+### Beschikbare Backend
 Deze frontend applicatie is geschreven voor de Backend die vorig jaar is opgeleverd. 
 
 De backend is beschikbaar op Github
 [Garage backend](https://github.com/jurgenkervezee/garage-backend-2020)
 Tevens zal ik de installatie handleiding en TO toevoegen. Voor verdere referentie.  
 
-Tevens is er testtooling gemaakt, namelijk API tests met Karate.
+Verder is er testtooling gemaakt, namelijk API tests met Karate.
 [Karate Garage Backend](https://github.com/jurgenkervezee/karateGarageBackEnd)
 
 ### Users om mee te kunnen testen.
 Op dit moment is de registreer functie van de backend nog niet werkend. Dat staat op de backlog.
 Je kunt de volgende users gebruiken om in te loggen.
 
-| User name     | Wachtwoord |
-|---------------|------------|
-| receptie-test | 123456     |
-| mechanic-test | 123456     |
-| cashier-test  | 123456     |
+| User name        | Wachtwoord |
+|------------------|------------|
+| reception-test   | 123456     |
+| mechanic-test    | 123456     |
+| cashier-test     | 123456     |
   
-Let wel op dat de Receptie rol alleen op de Receptie pagina. En de monteur op de monteur pagina etc.   
+Let wel op dat de Receptie rol alleen op de Receptie pagina mag. En de monteur op de monteur pagina etc.   
 
 ### installeren van de applicatie
 #### Requirements / bijzonderheden voor installatie
@@ -47,15 +48,15 @@ Daarom moet de frontend applicatie ook worden gelaunched van localhost 3000
 De volgende NPM installatie zijn gebruikt tijdens de ontwikkeling van de applicatie
 - npm axios
 - npm react-router-dom
-- npm react
+- npm react-hook-form
 
 #### inleiding
-Deze applicatie is voor het administratief handelen van een garagebedrijf. 
+Deze applicatie is voor het administratief afhandelen van een garagebedrijf. 
 De primaire functies zijn 
 - Het zoeken van een klant
 - Maken van een keurafspraak
 - Invoer van een nieuwe klant
-- Het keuren van een auto en dus te vervangen onderdelen voor het goedkeuren van een auto administreren. 
+- Het keuren van een auto en dus de te vervangen onderdelen voor het goedkeuren van een auto administreren. 
 - De auto gerepareerd of juist niet gerepareerd melden
 
 ![keuren van de auto](src/assets/img.png)
@@ -84,7 +85,7 @@ met het volgende commando kan de via de terminal in intelliJ de applicatie start
 ![terminal starten](src/assets/img_4.png)
 
 ### tijdens het testen
-Als je geen data meer kunt gebruiken kan je nieuwe data maken door klanten op te voeren 
+Als je tijdens het testen geen data meer kunt gebruiken kan je nieuwe data maken door klanten op te voeren 
 of de backend opnieuw te starten voor dezelfde basis set aan data. 
 
-#### veel plezier met de gebruik
+> veel plezier met het gebruik van de applicatie

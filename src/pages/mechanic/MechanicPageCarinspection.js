@@ -23,7 +23,7 @@ function MechanicPageCarinspection() {
                         Authorization: `Bearer ${token}`,
                     }
                 });
-                console.log(result);
+                // console.log(result);
                 setCarinspection(result.data);
 
             } catch (e) {
@@ -39,7 +39,7 @@ function MechanicPageCarinspection() {
                         Authorization: `Bearer ${token}`,
                     }
                 });
-                console.log(result);
+                // console.log(result);
 
                 //change list to include an extra field for capartsUsed
                 const newList = result.data.map((carpart) => {
